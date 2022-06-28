@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@main
         with:
           submodules: true
 
@@ -23,7 +23,7 @@ jobs:
       - name: Build
         run: sudo -E ./build-image.sh
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@main
         with:
           name: alpine-virt-image.qcow2.bz2
           path: "*.bz2"
