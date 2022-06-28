@@ -1,6 +1,8 @@
 name: Build
 
 on:
+  schedule:
+    - cron: '0 0 * * FRI'
   push:
     branches: [ main ]
   pull_request:
@@ -42,7 +44,7 @@ jobs:
       - uses: marvinpinto/action-automatic-releases@latest
         if: github.ref == 'refs/heads/main'
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          repo_token: ${{ secrets.GH_PAT }}
           files: "*.bz2"
           automatic_release_tag: ${{ steps.getversion.outputs.version }}
           prerelease: false
