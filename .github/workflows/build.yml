@@ -29,7 +29,7 @@ jobs:
           sudo chown -fR $USER:$USER $PWD
           ls -hal
           wget --quiet https://dl.min.io/client/mc/release/linux-amd64/mc -O /usr/local/bin/mc && chmod +x /usr/local/bin/mc
-          mc alias set sgp1 ${{ secrets.DOS_SGP1 }} ${{ secrets.DOS_KEY }} ${{ secrets.DOS_SECRET }} --api S3v4
+          mc alias set sgp1 https://sgp1.digitaloceanspaces.com ${{ secrets.DOS_KEY }} ${{ secrets.DOS_SECRET }} --api S3v4
           mc cp --recursive *.bz2 sgp1/tigefa/alpine/
           mc policy --recursive set public sgp1/tigefa/alpine/
           mc policy --recursive get sgp1/tigefa/alpine/
