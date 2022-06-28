@@ -27,8 +27,8 @@ jobs:
           sudo chown -fR $USER:$USER $PWD
           ls -hal
           wget --quiet https://dl.min.io/client/mc/release/linux-amd64/mc -O /usr/local/bin/mc && chmod +x /usr/local/bin/mc
-          mc alias set sgp1 $DOS_SGP1 $DOS_KEY $DOS_SECRET --api S3v4
-          mc cp --recursive '$PWD' sgp1/tigefa/alpine/
+          mc alias set sgp1 ${{ secrets.DOS_SGP1 }} ${{ secrets.DOS_KEY }} ${{ secrets.DOS_SECRET }} --api S3v4
+          mc cp --recursive *.bz2 sgp1/tigefa/alpine/
 
       - uses: actions/upload-artifact@main
         with:
